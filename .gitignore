@@ -41,3 +41,23 @@ app-example
 # generated native folders
 /ios
 /android
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+.env.*
+
+# AI / IDE specifics
+.claude/
+
+# Keystores and sensitive
+*.keystore
+*.cert
