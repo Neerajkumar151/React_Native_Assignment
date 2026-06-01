@@ -1,0 +1,165 @@
+{
+  "home": {
+    "welcome": {
+      "android": "Welcome to Android",
+      "ios": "Welcome to IOS",
+      "web": "Welcome to Web"
+    },
+    "subtitle": "Explore your first React Native app",
+    "counterText": "Current Count:",
+    "incrementButton": "Increment Count",
+    "trainingButton": "Training",
+    "noItems": "No items available",
+    "items": [
+      "React Native", "TypeScript", "Expo", "Navigation", "Components", "Hooks",
+      "State Management", "Redux", "Zustand", "Async Storage", "Axios", "React Query",
+      "Animations", "Gestures", "Push Notifications", "Deep Linking", "Firebase",
+      "GraphQL", "Jest", "Detox"
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch or leave feedback",
+    "submitButton": "Submit Feedback",
+    "alertTitle": "Feedback Submitted",
+    "alertMessage": "Thank you for your feedback"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Browse through your beautiful memories",
+    "form": {
+      "title": "Dynamic Form",
+      "username": "Enter Username",
+      "email": "Enter Email",
+      "password": "Enter Password"
+    },
+    "info": {
+      "os": "Running OS:",
+      "isIos": "Is iOS:",
+      "isAndroid": "Is Android:",
+      "isWeb": "Is Web:",
+      "isMac": "Is Mac:",
+      "isWindows": "Is Windows:",
+      "version": "Version:",
+      "yes": "Yes",
+      "no": "No",
+      "imageHidden": "Image is hidden because you are not on Android!"
+    }
+  },
+  "flexLayout": {
+    "back": "← Back",
+    "header": "Full Page Header",
+    "content1": "This is the main content area.",
+    "content2": "It uses `flex: 1` to push the Header to the very top, and the Footer to the very bottom!",
+    "footer": "Full Page Footer"
+  },
+  "training": {
+    "title": "React Native Basics",
+    "inputs": {
+      "title": "1. Text Inputs (Original)",
+      "passwordPlaceholder": "Enter password...",
+      "agePlaceholder": "Enter age (numbers only)...",
+      "ageRequired": "Age is required",
+      "ageInvalid": "Age must be at least 18 and at most 120",
+      "passwordInvalid": "Password must be at least 8 characters"
+    },
+    "buttons": {
+      "title": "2. Buttons",
+      "clickMe": "Click Me!",
+      "clicked": "You clicked me!",
+      "highlight": "Highlight Button",
+      "pressableTitle": "3. Pressable",
+      "pressablePressed": "I am being pressed!",
+      "pressableDefault": "Press and hold me",
+      "counterTitle": "4. Counter",
+      "addOne": "Add 1 (Total:",
+      "conditionalTitle": "5. Conditional Styling",
+      "tapChange": "Tap me to change my colors!",
+      "shadowTitle": "14. Custom Button with Shadow",
+      "shadowButton": "Shadow Button",
+      "animatedTitle": "15. Animated Pressable",
+      "holdZoom": "Hold to Zoom Out!"
+    },
+    "layout": {
+      "flexboxTitle": "6. Flexbox Layouts (Row & Col)",
+      "rowLayout": "Row Layout (Left to Right)",
+      "colLayout": "Column Layout (Top to Bottom)",
+      "screenTitle": "7. Screen Size & Fonts",
+      "width": "Screen Width:",
+      "height": "Screen Height:",
+      "percentText": "This text size is 2.5% of the screen!",
+      "hcfTitle": "8. Header/Content/Footer Layout",
+      "hcfDesc": "Since this is a full-page layout, it's best viewed on its own screen!",
+      "viewFull": "View Full Page Layout",
+      "gridTitle": "9. Two-Column Grid",
+      "alignTitle": "16. AlignItems Center Flexbox",
+      "top": "Top",
+      "middle": "Middle",
+      "bottom": "Bottom",
+      "responsiveTitle": "17. Responsive Grid"
+    },
+    "lists": {
+      "galleryTitle": "10. Horizontal Image Gallery",
+      "flatListTitle": "12. FlatList (Optimized)",
+      "item": "Item",
+      "newItem": "New Item!",
+      "addDynamic": "Add Item dynamically",
+      "sectionTitle": "13. SectionList",
+      "citrus": "Citrus",
+      "berries": "Berries",
+      "orange": "Orange",
+      "lemon": "Lemon",
+      "grapefruit": "Grapefruit",
+      "strawberry": "Strawberry",
+      "blueberry": "Blueberry",
+      "raspberry": "Raspberry",
+      "footer": "-- Footer --",
+      "perfTitle": "18. Performance (100 Texts)",
+      "perfDesc": "Rendering 100 texts using StyleSheet is much faster than inline styles."
+    }
+  },
+  "components": {
+    "header": {
+      "title": "My App Header"
+    },
+    "footer": {
+      "title": "My App Footer"
+    },
+    "chat": {
+      "title": "Messages",
+      "placeholder": "Type a message...",
+      "send": "Send",
+      "empty": "No messages yet. Start a conversation!",
+      "demoMessages": [
+        "Hey, how are you doing?",
+        "I'm doing great! Just working on this React Native app.",
+        "That sounds awesome. Is it using the new design system?",
+        "Yes! Fully dynamic Light/Dark mode support.",
+        "Incredible. Keep up the good work!"
+      ]
+    },
+    "platformMessage": {
+      "ios": "Welcome iOS",
+      "android": "Welcome Android",
+      "web": "Welcome Web"
+    },
+    "dynamicList": {
+      "title": "Simple Task List",
+      "placeholder": "Type a new task here...",
+      "add": "Add",
+      "empty": "No tasks yet. Type one above!",
+      "remove": "X"
+    },
+    "content": {
+      "count": "Count:",
+      "even": "Even",
+      "odd": "Odd",
+      "fruits": [
+        "Apple", "Banana", "Mango", "Orange", "Pineapple", "Grapes",
+        "Watermelon", "Papaya", "Kiwi", "Strawberry", "Blueberry",
+        "Peach", "Pear", "Cherry", "Litchi", "Guava", "Coconut",
+        "Pomegranate", "Dragon Fruit", "Avocado"
+      ]
+    }
+  }
+}

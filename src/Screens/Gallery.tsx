@@ -1,0 +1,20 @@
+import { View, Text, Button } from "react-native";
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import ThemeView from "../Components/ThemeView";
+
+const Gallery = () => {
+  const navigation = useNavigation();
+  return (
+    <ThemeView>
+      <Text>Gallery</Text>
+      <Button
+        title="Gallery"
+        onPress={() => {
+          navigation.goBack() as any;
+        }}
+      />
+    </ThemeView>
+  );
+};
+export default Gallery;
