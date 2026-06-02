@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, TouchableOpacityProps, ViewStyle, TextStyle } from 'react-native';
 import { useTheme } from '../../theme';
-import { ThemeColors } from '../../theme/colors';
+import { getAppButtonStyles } from '../../Styles/CommonComponentsStyles';
 
 export interface AppButtonProps extends TouchableOpacityProps {
   title: string;
@@ -65,7 +65,7 @@ const AppButton: React.FC<AppButtonProps> = ({
     }
   };
 
-  const dynamicStyles = getStyles(radius, typography);
+  const dynamicStyles = getAppButtonStyles(radius, typography);
 
   return (
     <TouchableOpacity
@@ -90,19 +90,5 @@ const AppButton: React.FC<AppButtonProps> = ({
     </TouchableOpacity>
   );
 };
-
-const getStyles = (radius: any, typography: any) => StyleSheet.create({
-  base: {
-    borderRadius: radius.md,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  text: {
-    fontSize: typography.size.md,
-    fontWeight: typography.weight.bold,
-    textAlign: 'center',
-  },
-});
 
 export default AppButton;

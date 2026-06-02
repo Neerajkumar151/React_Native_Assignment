@@ -9,19 +9,23 @@ import { getTrainingStyles } from "../Styles/TrainingStyles";
 import en from "../constants/en.json";
 import { useTheme } from "../theme";
 
+import AppKeyboardAvoidingView from "../Components/common/AppKeyboardAvoidingView";
+
 const Training = ({ navigation }: { navigation: any }) => {
   const { colors, spacing, radius, typography } = useTheme();
   const styles = getTrainingStyles(colors, spacing, radius, typography);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={styles.mainTitle}>{en.training.title}</Text>
-        <InputsSection />
-        <ButtonsSection />
-        <LayoutSection navigation={navigation} />
-        <ListsSection />
-      </ScrollView>
+      <AppKeyboardAvoidingView style={{ flex: 1 }} isTabScreen={false}>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <Text style={styles.mainTitle}>{en.training.title}</Text>
+          <InputsSection />
+          <ButtonsSection />
+          <LayoutSection navigation={navigation} />
+          <ListsSection />
+        </ScrollView>
+      </AppKeyboardAvoidingView>
     </SafeAreaView>
   );
 };

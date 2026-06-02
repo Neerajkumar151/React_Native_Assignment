@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FlatList,
   Keyboard,
-  KeyboardAvoidingView,
   Platform,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
-import { chatStyles } from "../Styles/ChatStyles";
+import AppButton from "../Components/common/AppButton";
+import AppKeyboardAvoidingView from "../Components/common/AppKeyboardAvoidingView";
+import { getChatStyles } from "../Styles/ChatStyles";
+import { useTheme } from "../theme";
 import en from "../constants/en.json";
 
 interface Message {
@@ -31,13 +32,11 @@ const generateDemoMessages = (): Message[] => {
 };
 
 const ChatScreen = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(generateDemoMessages());
   const [inputText, setInputText] = useState("");
+  const { colors, spacing, typography, radius } = useTheme();
+  const styles = getChatStyles(colors, spacing, typography, radius);
   const flatListRef = useRef<FlatList>(null);
-
-  useEffect(() => {
-    setMessages(generateDemoMessages());
-  }, []);
 
   const handleSend = () => {
     if (!inputText.trim()) return;
@@ -62,22 +61,22 @@ const ChatScreen = () => {
     return (
       <View
         style={[
-          chatStyles.messageWrapper,
-          item.isSender && chatStyles.senderWrapper,
+          styles.messageWrapper,
+          item.isSender && styles.senderWrapper,
         ]}
       >
         <Text
           style={[
-            chatStyles.messageText,
-            item.isSender && chatStyles.senderText,
+            styles.messageText,
+            item.isSender && styles.senderText,
           ]}
         >
           {item.text}
         </Text>
         <Text
           style={[
-            chatStyles.timestamp,
-            item.isSender && chatStyles.senderTimestamp,
+            styles.timestamp,
+            item.isSender && styles.senderTimestamp,
           ]}
         >
           {item.timestamp.toLocaleTimeString([], {
@@ -90,40 +89,41 @@ const ChatScreen = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={[chatStyles.container, { paddingBottom: 0 }]}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <View style={chatStyles.header}>
-        <Text style={chatStyles.headerTitle}>{en.components.chat.title}</Text>
+    <AppKeyboardAvoidingView style={styles.container} isTabScreen={true}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>{en.components.chat.title}</Text>
       </View>
 
       <FlatList
         ref={flatListRef}
+        style={{ flex: 1 }}
         data={messages}
         keyExtractor={(item) => item.id}
         renderItem={renderMessage}
-        contentContainerStyle={chatStyles.listContent}
+        contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
         onContentSizeChange={() =>
           flatListRef.current?.scrollToEnd({ animated: true })
         }
       />
 
-      <View style={chatStyles.inputContainer}>
+      <View style={styles.inputContainer}>
         <TextInput
-          style={chatStyles.input}
+          style={styles.input}
           placeholder={en.components.chat.placeholder}
+          placeholderTextColor={colors.text.placeholder}
           value={inputText}
           onChangeText={setInputText}
           onSubmitEditing={handleSend}
           returnKeyType="send"
         />
-        <TouchableOpacity style={chatStyles.button} onPress={handleSend}>
-          <Text style={chatStyles.buttonText}>{en.components.chat.send}</Text>
-        </TouchableOpacity>
+        <AppButton
+          title={en.components.chat.send}
+          onPress={handleSend}
+          disabled={!inputText.trim()}
+        />
       </View>
-    </KeyboardAvoidingView>
+    </AppKeyboardAvoidingView>
   );
 };
 

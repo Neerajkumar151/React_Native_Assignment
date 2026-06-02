@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, ViewProps, ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, PressableProps, ViewStyle, StyleProp } from 'react-native';
 import { useTheme } from '../../theme';
 import { getCardStyles } from '../../Styles/CommonComponentsStyles';
 
-export interface CardProps extends ViewProps {
+export interface PressableCardProps extends Omit<PressableProps, 'style'> {
   children: React.ReactNode;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle> | ((state: { pressed: boolean; hovered?: boolean; focused?: boolean }) => StyleProp<ViewStyle>);
   variant?: 'elevated' | 'outlined' | 'flat';
 }
 
-const Card: React.FC<CardProps> = ({ children, style, variant = 'elevated', ...props }) => {
+const PressableCard: React.FC<PressableCardProps> = ({ children, style, variant = 'elevated', ...props }) => {
   const { colors, spacing, radius } = useTheme();
   const dynamicStyles = getCardStyles(colors, spacing, radius);
 
@@ -40,10 +40,20 @@ const Card: React.FC<CardProps> = ({ children, style, variant = 'elevated', ...p
   };
 
   return (
-    <View style={[dynamicStyles.card, getVariantStyles(), style]} {...props}>
+    <Pressable
+      style={({ pressed, hovered, focused }: any) => [
+        dynamicStyles.card,
+        getVariantStyles(),
+        typeof style === 'function' ? style({ pressed, hovered, focused }) : style,
+        pressed && { backgroundColor: colors.primary + '40' }, // increased opacity for better visibility
+        hovered && !pressed && { backgroundColor: colors.background.elevated },
+        focused && { borderColor: colors.primary, borderWidth: 2 },
+      ]}
+      {...props}
+    >
       {children}
-    </View>
+    </Pressable>
   );
 };
 
-export default Card;
+export default PressableCard;

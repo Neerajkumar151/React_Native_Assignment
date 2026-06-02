@@ -8,21 +8,23 @@ import {
   StyleSheet,
   Text,
   View,
+  ActivityIndicator,
 } from "react-native";
 import ThemeView from "../Components/ThemeView";
 import UserCard from "../Components/UserCard";
 import en from "../constants/en.json";
 import { useTheme } from "../theme";
-import { ThemeColors } from "../theme/colors";
 import AppButton from "../Components/common/AppButton";
+import { getHomeStyles } from "../Styles/HomeStyles";
 
 const Home1 = () => {
   const [count, setCount] = useState(0);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const items = en.home.items;
 
   const navigator = useNavigation<any>();
   const { colors, spacing, typography, radius } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing, typography, radius);
+  const dynamicStyles = getHomeStyles(colors, spacing, typography, radius);
 
   return (
     <ThemeView>
@@ -61,14 +63,28 @@ const Home1 = () => {
             <AppButton
               title={en.home.incrementButton}
               onPress={() => setCount(count + 1)}
+              style={{ marginBottom: 10 }}
+            />
+            <AppButton
+              title="View Shopping Cart"
+              variant="secondary"
+              onPress={() => navigator.navigate("ShoppingCart")}
             />
           </View>
 
-          <Image
-            source={require("../../assets/images/welcome.png")}
-            style={dynamicStyles.image}
-            resizeMode="contain"
-          />
+          <View style={dynamicStyles.imageWrapper}>
+            {!isImageLoaded && (
+              <View style={dynamicStyles.imagePlaceholder}>
+                <ActivityIndicator size="small" color={colors.primary} />
+              </View>
+            )}
+            <Image
+              source={require("../../assets/images/welcome.png")}
+              style={[dynamicStyles.image, !isImageLoaded && { opacity: 0 }]}
+              resizeMode="contain"
+              onLoad={() => setIsImageLoaded(true)}
+            />
+          </View>
 
           <AppButton
             title={en.home.trainingButton}
@@ -92,65 +108,4 @@ const Home1 = () => {
     </ThemeView>
   );
 };
-
-const getStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) => StyleSheet.create({
-  container: {
-    padding: spacing.sm,
-    alignItems: "center",
-  },
-  icon: {
-    marginBottom: spacing.sm,
-  },
-  title: {
-    fontSize: typography.size.xxl,
-    fontWeight: typography.weight.bold,
-    color: colors.text.primary,
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: typography.size.sm,
-    color: colors.text.secondary,
-    marginTop: spacing.sm,
-    textAlign: "center",
-  },
-  image: {
-    width: 200,
-    height: 200,
-    marginTop: spacing.xl,
-    borderRadius: radius.xl,
-  },
-  cardContainer: {
-    width: "100%",
-    marginTop: spacing.xl,
-  },
-  counterContainer: {
-    marginTop: spacing.xl,
-    alignItems: "center",
-  },
-  counterText: {
-    color: colors.text.primary,
-    fontSize: typography.size.lg,
-    marginBottom: spacing.sm,
-  },
-  listContainer: {
-    marginTop: spacing.xxl,
-    width: "100%",
-    paddingHorizontal: spacing.xl,
-  },
-  emptyText: {
-    color: colors.status.error,
-    fontSize: typography.size.md,
-    textAlign: "center",
-    fontStyle: "italic",
-  },
-  listItem: {
-    color: colors.text.primary,
-    fontSize: typography.size.md,
-    marginVertical: spacing.xs,
-  },
-  button: {
-    marginTop: spacing.xl,
-  },
-});
-
 export default Home1;

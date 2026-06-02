@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import { getPageLayoutStyles } from '../Styles/LayoutStyles';
+import { useTheme } from '../theme';
 
 type PageLayoutProps = {
   headerSlot?: React.ReactNode;
@@ -8,6 +10,9 @@ type PageLayoutProps = {
 };
 
 const PageLayout = ({ headerSlot, bodySlot, footerSlot }: PageLayoutProps) => {
+  const { colors } = useTheme();
+  const styles = getPageLayoutStyles(colors);
+  
   return (
     <View style={styles.container}>
       {headerSlot && <View style={styles.headerContainer}>{headerSlot}</View>}
@@ -16,26 +21,5 @@ const PageLayout = ({ headerSlot, bodySlot, footerSlot }: PageLayoutProps) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0F0F1A',
-  },
-  headerContainer: {
-    zIndex: 10,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-  },
-  bodyContainer: {
-    flex: 1,
-  },
-  footerContainer: {
-    paddingBottom: 20,
-  }
-});
 
 export default PageLayout;

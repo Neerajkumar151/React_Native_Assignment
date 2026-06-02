@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import en from "../constants/en.json";
+import { getHeaderStyles } from "../Styles/LayoutStyles";
 import { useTheme } from "../theme";
-import { ThemeColors } from "../theme/colors";
 
 const Header = () => {
   const { colors, spacing, typography } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing, typography);
+  const dynamicStyles = getHeaderStyles(colors, spacing, typography);
 
   return (
     <View style={dynamicStyles.header}>
@@ -14,18 +14,5 @@ const Header = () => {
     </View>
   );
 };
-
-const getStyles = (colors: ThemeColors, spacing: any, typography: any) => StyleSheet.create({
-  header: {
-    padding: spacing.xl,
-    backgroundColor: colors.secondary,
-    alignItems: "center",
-  },
-  text: {
-    fontSize: typography.size.xl,
-    color: colors.text.dark, // Keep white on colored header
-    fontWeight: typography.weight.bold,
-  },
-});
 
 export default Header;

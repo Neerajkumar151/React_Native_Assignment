@@ -1,23 +1,20 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Alert,
-} from "react-native";
-import React from "react";
-import ThemeView from "../Components/ThemeView";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { Alert, StyleSheet, Text, View } from "react-native";
+import ThemeView from "../Components/ThemeView";
+import AppButton from "../Components/common/AppButton";
 import en from "../constants/en.json";
 import { useTheme } from "../theme";
-import { ThemeColors } from "../theme/colors";
-import AppButton from "../Components/common/AppButton";
+import { getContactStyles } from "../Styles/ContactStyles";
 
 const Contact1 = () => {
   const { colors, spacing, typography } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing, typography);
+  const dynamicStyles = getContactStyles(colors, spacing, typography);
+  const navigation = useNavigation<any>();
 
   return (
-    <ThemeView>
+    <ThemeView style={{ flex: 1 }}>
       <View style={dynamicStyles.container}>
         <Ionicons
           name="chatbubbles"
@@ -35,34 +32,15 @@ const Contact1 = () => {
           }
           style={dynamicStyles.platformButton}
         />
+
+        <AppButton
+          title={en.contact.contactListButton}
+          onPress={() => navigation.navigate("ContactList")}
+          style={dynamicStyles.listButton}
+        />
       </View>
     </ThemeView>
   );
 };
-
-const getStyles = (colors: ThemeColors, spacing: any, typography: any) => StyleSheet.create({
-  container: {
-    padding: spacing.lg,
-    alignItems: "center",
-  },
-  icon: {
-    marginBottom: spacing.md,
-  },
-  title: {
-    fontSize: typography.size.xxl,
-    fontWeight: typography.weight.bold,
-    color: colors.text.primary,
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: typography.size.sm,
-    color: colors.text.secondary,
-    marginTop: spacing.sm,
-    textAlign: "center",
-  },
-  platformButton: {
-    marginTop: spacing.xxl,
-  },
-});
 
 export default Contact1;

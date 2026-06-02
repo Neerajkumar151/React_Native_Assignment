@@ -1,10 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
+import en from "../constants/en.json";
 
 const Contact = () => {
   return (
     <View>
-      <Text>Contact</Text>
+      <Text>{en.contact.title}</Text>
     </View>
   );
 };

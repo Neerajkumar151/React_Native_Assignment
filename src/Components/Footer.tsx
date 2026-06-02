@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import en from "../constants/en.json";
+import { getFooterStyles } from "../Styles/LayoutStyles";
 import { useTheme } from "../theme";
-import { ThemeColors } from "../theme/colors";
 
 const Footer = () => {
   const { colors, spacing } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing);
+  const dynamicStyles = getFooterStyles(colors, spacing);
 
   return (
     <View style={dynamicStyles.footer}>
@@ -14,15 +14,5 @@ const Footer = () => {
     </View>
   );
 };
-
-const getStyles = (colors: ThemeColors, spacing: any) => StyleSheet.create({
-  footer: {
-    padding: spacing.lg,
-    paddingBottom: 90,
-    backgroundColor: colors.background.dark,
-    alignItems: "center",
-  },
-  text: { color: colors.text.muted },
-});
 
 export default Footer;

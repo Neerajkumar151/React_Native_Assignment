@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Animated, Pressable } from "react-native"
 import { getTrainingStyles } from "../../Styles/TrainingStyles";
 import en from "../../constants/en.json";
 import AppButton from "../common/AppButton";
+import PressableCard from "../common/PressableCard";
 import { useTheme } from "../../theme";
 
 const ButtonsSection = () => {
@@ -52,14 +53,14 @@ const ButtonsSection = () => {
         </Pressable>
       </View>
 
-      <View style={styles.section}>
+      <PressableCard style={styles.section} onPress={() => {}}>
         <Text style={styles.sectionTitle}>{en.training.buttons.counterTitle}</Text>
         <AppButton
           title={`${en.training.buttons.addOne} ${counter})`}
           variant="danger"
           onPress={() => setCounter(counter + 1)}
         />
-      </View>
+      </PressableCard>
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>{en.training.buttons.conditionalTitle}</Text>

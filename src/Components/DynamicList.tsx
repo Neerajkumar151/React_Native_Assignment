@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import en from '../constants/en.json';
+import { getDynamicListStyles } from '../Styles/MiscComponentsStyles';
 import { useTheme } from '../theme';
-import { ThemeColors } from '../theme/colors';
 import AppInput from './common/AppInput';
 import AppButton from './common/AppButton';
 
@@ -11,7 +11,7 @@ const DynamicList = () => {
   const [inputText, setInputText] = useState('');
 
   const { colors, spacing, typography, radius } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing, typography, radius);
+  const dynamicStyles = getDynamicListStyles(colors, spacing, typography, radius);
 
   const addTask = () => {
     if (inputText === '') {
@@ -70,47 +70,5 @@ const DynamicList = () => {
     </View>
   );
 };
-
-const getStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) => StyleSheet.create({
-  container: {
-    backgroundColor: colors.background.surface,
-    padding: spacing.lg,
-    borderRadius: radius.lg,
-    marginVertical: spacing.md,
-    marginHorizontal: spacing.lg,
-    flex: 1, 
-  },
-  title: {
-    color: colors.text.primary,
-    fontSize: typography.size.xl,
-    fontWeight: typography.weight.bold,
-    marginBottom: spacing.lg,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    marginBottom: spacing.lg,
-    alignItems: 'center',
-  },
-  taskRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: colors.background.elevated,
-    padding: spacing.md,
-    borderRadius: radius.md,
-    marginBottom: spacing.sm,
-  },
-  taskText: {
-    color: colors.text.primary,
-    fontSize: typography.size.md,
-    flex: 1,
-  },
-  emptyText: {
-    color: colors.text.muted,
-    textAlign: 'center',
-    fontStyle: 'italic',
-    marginTop: spacing.xl,
-  }
-});
 
 export default DynamicList;

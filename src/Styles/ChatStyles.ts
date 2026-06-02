@@ -1,77 +1,81 @@
 import { StyleSheet } from "react-native";
-import { lightColors } from "../theme/colors";
+import { ThemeColors } from "../theme/colors";
 
-export const chatStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: lightColors.background.main,
-  },
-  header: {
-    padding: 15,
-    paddingTop: 50,
-    backgroundColor: lightColors.primary,
-    alignItems: "center",
-  },
-  headerTitle: {
-    color: lightColors.text.dark,
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  listContent: {
-    padding: 10,
-    paddingBottom: 80,
-  },
-  messageWrapper: {
-    marginVertical: 5,
-    padding: 10,
-    backgroundColor: "#e0e0e0", // Very basic gray
-    borderRadius: 5, // Basic blocky corners
-    alignSelf: "flex-start",
-    maxWidth: "80%",
-  },
-  senderWrapper: {
-    backgroundColor: lightColors.primary,
-    alignSelf: "flex-end",
-  },
-  messageText: {
-    fontSize: 16,
-    color: "#000",
-  },
-  senderText: {
-    color: "#fff",
-  },
-  timestamp: {
-    fontSize: 10,
-    color: "#666",
-    marginTop: 5,
-    alignSelf: "flex-end",
-  },
-  senderTimestamp: {
-    color: "#ddd",
-  },
-  inputContainer: {
-    flexDirection: "row",
-    padding: 10,
-    paddingBottom: 30, // For bottom spacing
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
-    backgroundColor: "#fff",
-  },
-  input: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ccc", // Basic input box
-    padding: 10,
-    marginRight: 10,
-  },
-  button: {
-    backgroundColor: lightColors.primary,
-    paddingHorizontal: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
-});
+export const getChatStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background.main,
+    },
+    header: {
+      padding: spacing.lg,
+      paddingTop: spacing.xxl,
+      backgroundColor: colors.primary,
+      alignItems: "center",
+    },
+    headerTitle: {
+      color: colors.text.dark,
+      fontSize: typography.size.xl,
+      fontWeight: typography.weight.bold,
+    },
+    listContent: {
+      padding: spacing.md,
+      paddingBottom: 80,
+    },
+    messageWrapper: {
+      marginVertical: spacing.xs,
+      padding: spacing.md,
+      backgroundColor: colors.background.elevated,
+      borderRadius: radius.md,
+      alignSelf: "flex-start",
+      maxWidth: "80%",
+    },
+    senderWrapper: {
+      backgroundColor: colors.primary,
+      alignSelf: "flex-end",
+    },
+    messageText: {
+      fontSize: typography.size.md,
+      color: colors.text.primary,
+    },
+    senderText: {
+      color: colors.text.dark,
+    },
+    timestamp: {
+      fontSize: typography.size.xs,
+      color: colors.text.muted,
+      marginTop: spacing.xs,
+      alignSelf: "flex-end",
+    },
+    senderTimestamp: {
+      color: colors.text.dark,
+      opacity: 0.8,
+    },
+    inputContainer: {
+      flexDirection: "row",
+      padding: spacing.md,
+      borderTopWidth: 1,
+      borderTopColor: colors.border,
+      backgroundColor: colors.background.surface,
+    },
+    input: {
+      flex: 1,
+      borderWidth: 1,
+      borderColor: colors.border,
+      padding: spacing.md,
+      marginRight: spacing.md,
+      borderRadius: radius.md,
+      color: colors.text.primary,
+    },
+    button: {
+      backgroundColor: colors.primary,
+      paddingHorizontal: spacing.lg,
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: radius.md,
+    },
+    buttonText: {
+      color: colors.text.dark,
+      fontWeight: typography.weight.bold,
+    },
+  });

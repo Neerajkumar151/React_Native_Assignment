@@ -3,6 +3,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ThemeView from "../Components/ThemeView";
 import React from "react";
+import en from "../constants/en.json";
+
 const Home = () => {
   const navigation = useNavigation<any>();
   return (
@@ -12,7 +14,7 @@ const Home = () => {
           navigation.navigate("Gallery");
         }}
       >
-        <Text>Home</Text>
+        <Text>{en.home.title}</Text>
       </TouchableOpacity>
     </ThemeView>
   );

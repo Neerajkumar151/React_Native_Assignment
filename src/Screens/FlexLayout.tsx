@@ -1,15 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import en from "../constants/en.json";
+import { getFlexLayoutStyles } from "../Styles/FlexLayoutStyles";
 import { useTheme } from "../theme";
-import { ThemeColors } from "../theme/colors";
 
 const FlexLayout = () => {
   const navigation = useNavigation();
   const { colors, spacing, typography } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing, typography);
+  const dynamicStyles = getFlexLayoutStyles(colors, spacing, typography);
+  const { width, height } = useWindowDimensions();
+
+  // If width is greater than height, it's landscape
+  const isLandscape = width > height;
 
   return (
     <SafeAreaView style={dynamicStyles.safeArea}>
@@ -24,9 +28,16 @@ const FlexLayout = () => {
         </View>
 
         {/* Content - flex: 1 (Fills remaining space) */}
-        <View style={dynamicStyles.content}>
-          <Text style={dynamicStyles.contentText}>{en.flexLayout.content1}</Text>
-          <Text style={dynamicStyles.contentText}>{en.flexLayout.content2}</Text>
+        <View style={[dynamicStyles.content, { flexDirection: isLandscape ? "row" : "column" }]}>
+          <View style={[dynamicStyles.column, { backgroundColor: colors.background.elevated }]}>
+            <Text style={dynamicStyles.columnTitle}>{en.flexLayout.column1}</Text>
+            <Text style={dynamicStyles.contentText}>{en.flexLayout.content1}</Text>
+          </View>
+          
+          <View style={[dynamicStyles.column, { backgroundColor: colors.background.surface }]}>
+            <Text style={dynamicStyles.columnTitle}>{en.flexLayout.column2}</Text>
+            <Text style={dynamicStyles.contentText}>{en.flexLayout.content2}</Text>
+          </View>
         </View>
 
         {/* Footer - Fixed Height */}
@@ -39,38 +50,3 @@ const FlexLayout = () => {
 };
 
 export default FlexLayout;
-
-const getStyles = (colors: ThemeColors, spacing: any, typography: any) => StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: colors.background.paper },
-  container: { flex: 1 },
-  
-  header: { 
-    height: 80, 
-    backgroundColor: colors.accents.purple, 
-    flexDirection: 'row',
-    justifyContent: 'space-between', 
-    alignItems: 'center',
-    paddingHorizontal: spacing.xl
-  },
-  backButton: { padding: spacing.md },
-  backText: { color: colors.text.dark, fontWeight: typography.weight.bold, fontSize: typography.size.md },
-  headerText: { color: colors.text.dark, fontSize: typography.size.xl, fontWeight: typography.weight.bold },
-  placeholder: { width: 50 },
-
-  content: { 
-    flex: 1, 
-    backgroundColor: colors.background.elevated, 
-    justifyContent: 'center', 
-    alignItems: 'center',
-    padding: spacing.xl
-  },
-  contentText: { color: colors.text.primary, fontSize: typography.size.md, textAlign: "center", marginBottom: spacing.lg, lineHeight: 24 },
-
-  footer: { 
-    height: 80, 
-    backgroundColor: colors.accents.cyan, 
-    justifyContent: 'center', 
-    alignItems: 'center' 
-  },
-  footerText: { color: colors.text.dark, fontSize: typography.size.lg, fontWeight: typography.weight.bold },
-});

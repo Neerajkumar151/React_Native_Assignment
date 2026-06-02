@@ -7,8 +7,8 @@ import {
   ScrollView,
 } from "react-native";
 import en from "../constants/en.json";
+import { getContentStyles } from "../Styles/LayoutStyles";
 import { useTheme } from "../theme";
-import { ThemeColors } from "../theme/colors";
 import AppButton from "./common/AppButton";
 
 type ContentProps = {
@@ -19,7 +19,7 @@ const Content = ({ title }: ContentProps) => {
   const [count, setCount] = useState(0);
   
   const { colors, spacing, typography, radius } = useTheme();
-  const dynamicStyles = getStyles(colors, spacing, typography, radius);
+  const dynamicStyles = getContentStyles(colors, spacing, typography, radius);
 
   const listItems = en.components.content.fruits;
 
@@ -67,48 +67,5 @@ const Content = ({ title }: ContentProps) => {
     </View>
   );
 };
-
-const getStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) => StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: spacing.lg,
-    backgroundColor: colors.background.surface,
-  },
-  title: {
-    fontSize: typography.size.xl,
-    fontWeight: typography.weight.bold,
-    marginBottom: spacing.xl,
-    textAlign: "center",
-    color: colors.text.primary,
-  },
-  counterSection: {
-    alignItems: "center",
-    marginBottom: spacing.xl,
-    padding: spacing.xl,
-    borderRadius: radius.lg,
-    backgroundColor: colors.background.elevated,
-  },
-  countText: { 
-    fontSize: typography.size.lg, 
-    marginBottom: spacing.lg,
-    color: colors.text.primary,
-  },
-  highlight: { color: colors.primary, fontWeight: typography.weight.bold },
-  buttonRow: { flexDirection: "row", gap: spacing.xl },
-  scrollView: { flex: 1, marginTop: spacing.sm },
-  listItem: {
-    padding: spacing.lg,
-    marginBottom: spacing.sm,
-    borderRadius: radius.md,
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: colors.background.paper,
-  },
-  listText: { 
-    fontSize: typography.size.md, 
-    fontWeight: typography.weight.medium,
-    color: colors.text.primary,
-  },
-});
 
 export default Content;

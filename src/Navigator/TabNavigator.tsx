@@ -1,10 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
+import ChatScreen from "../Screens/ChatScreen";
 import Contact1 from "../Screens/Contact1";
 import Gallery1 from "../Screens/Gallery1";
 import Home1 from "../Screens/Home1";
-import ChatScreen from "../Screens/ChatScreen";
 import Training from "../Screens/Training";
 import { useTheme } from "../theme";
 
@@ -42,10 +42,9 @@ const TabNavigator = () => {
           left: 20,
           right: 20,
           elevation: 8,
-          backgroundColor: colors.background.paper, 
+          backgroundColor: colors.background.paper,
           borderRadius: radius.round,
-          height: 62,
-          borderTopWidth: 0,
+          height: 60,
           paddingBottom: 5,
           paddingTop: 5,
           shadowColor: "#000",
@@ -53,12 +52,11 @@ const TabNavigator = () => {
           shadowOpacity: 0.3,
           shadowRadius: 12,
         },
-        tabBarActiveTintColor: colors.primary, 
+        tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.text.muted,
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: typography.weight.medium as any,
-          marginTop: 2,
         },
       })}
     >
