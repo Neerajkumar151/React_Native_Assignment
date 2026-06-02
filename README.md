@@ -7,18 +7,23 @@ Welcome to my comprehensive React Native assignment repository. This project is 
 This application goes far beyond a single screen, featuring a highly modular and scalable architecture:
 
 ### 1. Custom Theming Engine
+
 - Designed a centralized design system located in `src/theme/`.
 - Dynamically injects `colors`, `spacing`, `radius`, and `typography` across all components using a custom `useTheme` hook, ensuring absolute visual consistency.
 
 ### 2. Reusable Foundation Components
+
 Built a suite of highly reusable, robust UI building blocks in `src/Components/common/`:
+
 - `AppButton` & `AppInput`: Standardized interactive elements.
 - `Card` & `PressableCard`: Flexible container components.
 - `AppKeyboardAvoidingView`: Ensures smooth cross-platform keyboard handling.
 - `DynamicList`: Optimized data rendering.
 
 ### 3. Advanced Navigation
+
 Implemented complex routing strategies using `@react-navigation`:
+
 - **Nested Navigation**: A primary `Stack.Navigator` wrapping multiple specialized bottom tab navigators (`TabNavigator`, `DashboardTabNavigator`).
 - **Custom Tab Bars**: Featuring custom floating action buttons, active/inactive state styling, and exact icon matching.
 
@@ -27,18 +32,22 @@ Implemented complex routing strategies using `@react-navigation`:
 I have successfully developed a wide variety of isolated features and screens:
 
 ### Fintech Dashboard UI (Pixel-Perfect Figma Match)
+
 - **Dashboard Screen**: Features a custom profile header, a scrollable wallet card carousel (with balance masking logic), a quick access menu, and an accounts list section.
 - **Funds Overview Screen**: Uses a highly responsive 2x2 grid layout, heavily reusing the `AccountCard` component with custom SVGs, gradient overrides, and updated typography to match exact design requirements.
 
 ### Social & Communication
+
 - **Chat Screen (`ChatScreen.tsx`)**: Real-time messaging UI layouts.
 - **Contacts (`Contact.tsx`, `ContactListScreen.tsx`)**: Renders lists and detailed contact information interfaces.
 
 ### Commerce & Media
+
 - **Shopping Cart (`ShoppingCartScreen.tsx`)**: E-commerce layout simulating cart logic and item presentation.
 - **Gallery (`Gallery.tsx`)**: Media and image presentation layouts.
 
 ### Playgrounds & Training
+
 - **Flex Layout (`FlexLayout.tsx`)**: An advanced playground demonstrating complex flexbox alignment, wrapping, and distribution.
 - **Training Hub (`Training.tsx`)**: Modularized sections (`LayoutSection`, `ListsSection`, `ButtonsSection`, `InputsSection`) demonstrating mastery over core UI patterns.
 
@@ -47,13 +56,6 @@ I have successfully developed a wide variety of isolated features and screens:
 <details>
   <summary>Click to view all progression screenshots</summary>
 
-  <img src="./assets/public_images/Screenshot_2026-06-02-12-06-53-168_host.exp.exponent.jpg.jpeg" width="250" />
-  <img src="./assets/public_images/Screenshot_2026-06-02-12-07-04-829_host.exp.exponent.jpg.jpeg" width="250" />
-  <img src="./assets/public_images/Screenshot_2026-06-02-12-07-07-448_host.exp.exponent.jpg.jpeg" width="250" />
-  <img src="./assets/public_images/Screenshot_2026-06-02-12-08-15-039_host.exp.exponent.jpg.jpeg" width="250" />
-  <img src="./assets/public_images/Screenshot_2026-06-02-12-14-26-200_host.exp.exponent.jpg.jpeg" width="250" />
-  <img src="./assets/public_images/Screenshot_2026-06-02-12-14-28-572_host.exp.exponent.jpg.jpeg" width="250" />
-  <img src="./assets/public_images/Screenshot_2026-06-02-18-06-28-855_host.exp.exponent.jpg.jpeg" width="250" />
   <img src="./assets/public_images/Screenshot_2026-06-02-18-19-05-994_host.exp.exponent.jpg.jpeg" width="250" />
   <img src="./assets/public_images/Screenshot_2026-06-02-18-19-10-174_host.exp.exponent.jpg.jpeg" width="250" />
   <img src="./assets/public_images/Screenshot_2026-06-02-18-19-12-584_host.exp.exponent.jpg.jpeg" width="250" />
@@ -82,6 +84,7 @@ I have successfully developed a wide variety of isolated features and screens:
 ## 🚀 Getting Started
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
