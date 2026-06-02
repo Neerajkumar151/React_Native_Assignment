@@ -69,6 +69,12 @@ const Home1 = () => {
               title="View Shopping Cart"
               variant="secondary"
               onPress={() => navigator.navigate("ShoppingCart")}
+              style={{ marginBottom: 10 }}
+            />
+            <AppButton
+              title="View Assignment 3 Dashboard"
+              variant="primary"
+              onPress={() => navigator.navigate("DashboardTabs")}
             />
           </View>
 

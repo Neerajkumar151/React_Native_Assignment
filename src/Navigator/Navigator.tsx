@@ -6,6 +6,7 @@ import FlexLayout from "../Screens/FlexLayout";
 import Gallery from "../Screens/Gallery";
 import ShoppingCartScreen from "../Screens/ShoppingCartScreen";
 import TabNavigator from "./TabNavigator";
+import DashboardTabNavigator from "./DashboardTabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const Navigator = () => {
         }}
       >
         <Stack.Screen name="Home" component={TabNavigator} />
+        <Stack.Screen name="DashboardTabs" component={DashboardTabNavigator} />
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="ContactList" component={ContactListScreen} />
         <Stack.Screen name="Gallery" component={Gallery} />
