@@ -1,18 +1,19 @@
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import React, { useMemo } from "react";
+import { Text, View, StyleProp, ViewStyle, ImageStyle, ImageSourcePropType } from "react-native";
 import { getDashboardStyles } from "../../Styles/DashboardStyles";
 import { useTheme } from "../../theme";
+import PressableCard from "../common/PressableCard";
 
 interface AccountCardProps {
   tag?: string;
   title: string;
   subTitle: string;
-  imageSource: any;
+  imageSource: ImageSourcePropType;
   gradientColors?: string[];
-  imageStyle?: any;
-  cardStyle?: any;
+  imageStyle?: StyleProp<ImageStyle>;
+  cardStyle?: StyleProp<ViewStyle>;
   titleColor?: string;
   subTitleColor?: string;
 }
@@ -22,14 +23,14 @@ const AccountCard: React.FC<AccountCardProps> = ({
   title,
   subTitle,
   imageSource,
-  gradientColors = ["#20112E", "#674588"],
+  gradientColors,
   imageStyle,
   cardStyle,
   titleColor,
   subTitleColor,
 }) => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   const titleParts = title.split("\\n");
   const firstPart = titleParts[0];
@@ -37,9 +38,9 @@ const AccountCard: React.FC<AccountCardProps> = ({
     titleParts.length > 1 ? titleParts.slice(1).join("\\n") : "";
 
   return (
-    <TouchableOpacity style={{ flex: 1 }} activeOpacity={0.8}>
+    <PressableCard style={{ flex: 1, width: 'auto' as any, padding: 0, backgroundColor: 'transparent' }} variant="flat" onPress={() => {}}>
       <LinearGradient
-        colors={gradientColors as any}
+        colors={(gradientColors as any) || [colors.background.elevated, colors.background.elevated]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={[styles.accountCard, { backgroundColor: "transparent" }, cardStyle]}
@@ -69,7 +70,7 @@ const AccountCard: React.FC<AccountCardProps> = ({
           />
         </View>
       </LinearGradient>
-    </TouchableOpacity>
+    </PressableCard>
   );
 };
 

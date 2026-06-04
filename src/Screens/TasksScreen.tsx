@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, useColorScheme } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../Components/Header';
@@ -12,7 +12,7 @@ import { getTasksStyles } from '../Styles/TasksStyles';
 
 const TasksScreen = () => {
   const { colors } = useTheme();
-  const styles = getTasksStyles(colors);
+  const styles = useMemo(() => getTasksStyles(colors), [colors]);
   return (
     <SafeAreaView style={styles.container}>
       <AppKeyboardAvoidingView style={{ flex: 1 }} isTabScreen={false}>

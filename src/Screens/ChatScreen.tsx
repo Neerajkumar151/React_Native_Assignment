@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import {
   FlatList,
   Keyboard,
@@ -35,7 +35,7 @@ const ChatScreen = () => {
   const [messages, setMessages] = useState<Message[]>(generateDemoMessages());
   const [inputText, setInputText] = useState("");
   const { colors, spacing, typography, radius } = useTheme();
-  const styles = getChatStyles(colors, spacing, typography, radius);
+  const styles = useMemo(() => getChatStyles(colors, spacing, typography, radius), [colors, spacing, typography, radius]);
   const flatListRef = useRef<FlatList>(null);
 
   const handleSend = () => {

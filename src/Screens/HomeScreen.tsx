@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import React, { useState, useMemo } from "react";
 import {
   Image,
   Platform,
@@ -16,15 +16,16 @@ import en from "../constants/en.json";
 import { useTheme } from "../theme";
 import AppButton from "../Components/common/AppButton";
 import { getHomeStyles } from "../Styles/HomeStyles";
+import { RootStackParamList } from "../Navigator/types";
 
-const Home1 = () => {
+const HomeScreen = () => {
   const [count, setCount] = useState(0);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const items = en.home.items;
 
-  const navigator = useNavigation<any>();
+  const navigator = useNavigation<NavigationProp<RootStackParamList>>();
   const { colors, spacing, typography, radius } = useTheme();
-  const dynamicStyles = getHomeStyles(colors, spacing, typography, radius);
+  const dynamicStyles = useMemo(() => getHomeStyles(colors, spacing, typography, radius), [colors, spacing, typography, radius]);
 
   return (
     <ThemeView>
@@ -66,15 +67,15 @@ const Home1 = () => {
               style={{ marginBottom: 10 }}
             />
             <AppButton
-              title="View Shopping Cart"
+              title={en.home.viewCart}
               variant="secondary"
               onPress={() => navigator.navigate("ShoppingCart")}
               style={{ marginBottom: 10 }}
             />
             <AppButton
-              title="View Assignment 3 Dashboard"
+              title={en.home.viewDashboard}
               variant="primary"
-              onPress={() => navigator.navigate("DashboardTabs")}
+              onPress={() => navigator.navigate("DashboardTabs" as never)}
             />
           </View>
 
@@ -114,4 +115,4 @@ const Home1 = () => {
     </ThemeView>
   );
 };
-export default Home1;
+export default HomeScreen;

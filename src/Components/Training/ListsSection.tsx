@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { View, Text, ScrollView, FlatList, SectionList } from "react-native";
 import { getTrainingStyles } from "../../Styles/TrainingStyles";
 import en from "../../constants/en.json";
@@ -20,7 +20,7 @@ const HUNDRED_ITEMS = Array.from({ length: 100 }, (_, i) => i);
 const ListsSection = () => {
   const [flatListData, setFlatListData] = useState(FLAT_LIST_DATA);
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getTrainingStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getTrainingStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <>

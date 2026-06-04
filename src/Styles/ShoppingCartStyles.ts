@@ -1,11 +1,14 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
 export const getShoppingCartStyles = (
   colors: ThemeColors,
-  spacing: any,
-  typography: any,
-  radius: any
+  spacing: Spacing,
+  typography: Typography,
+  radius: Radius
 ) =>
   StyleSheet.create({
     safeArea: {

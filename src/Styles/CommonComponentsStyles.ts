@@ -1,7 +1,10 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
-export const getAppButtonStyles = (radius: any, typography: any) => StyleSheet.create({
+export const getAppButtonStyles = (radius: Radius, typography: Typography) => StyleSheet.create({
   base: {
     borderRadius: radius.md,
     alignItems: 'center',
@@ -15,7 +18,7 @@ export const getAppButtonStyles = (radius: any, typography: any) => StyleSheet.c
   },
 });
 
-export const getAppInputStyles = (colors: ThemeColors, spacing: any, radius: any, typography: any) => StyleSheet.create({
+export const getAppInputStyles = (colors: ThemeColors, spacing: Spacing, radius: Radius, typography: Typography) => StyleSheet.create({
   container: {
     marginBottom: spacing.md,
     width: "100%",
@@ -46,7 +49,7 @@ export const getAppInputStyles = (colors: ThemeColors, spacing: any, radius: any
   },
 });
 
-export const getCardStyles = (colors: ThemeColors, spacing: any, radius: any) => StyleSheet.create({
+export const getCardStyles = (colors: ThemeColors, spacing: Spacing, radius: Radius) => StyleSheet.create({
   card: {
     padding: spacing.lg,
     borderRadius: radius.lg,

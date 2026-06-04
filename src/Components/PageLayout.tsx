@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { getPageLayoutStyles } from '../Styles/LayoutStyles';
 import { useTheme } from '../theme';
@@ -11,7 +11,7 @@ type PageLayoutProps = {
 
 const PageLayout = ({ headerSlot, bodySlot, footerSlot }: PageLayoutProps) => {
   const { colors } = useTheme();
-  const styles = getPageLayoutStyles(colors);
+  const styles = useMemo(() => getPageLayoutStyles(colors), [colors]);
   
   return (
     <View style={styles.container}>

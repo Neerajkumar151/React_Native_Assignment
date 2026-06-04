@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useMemo, useState, useRef } from "react";
 import { View, Text, TouchableOpacity, Animated, Pressable } from "react-native";
 import { getTrainingStyles } from "../../Styles/TrainingStyles";
 import en from "../../constants/en.json";
@@ -12,7 +12,7 @@ const ButtonsSection = () => {
   const [isStyleActive, setIsStyleActive] = useState(false);
 
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getTrainingStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getTrainingStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const handlePressIn = () =>
@@ -81,7 +81,7 @@ const ButtonsSection = () => {
         <AppButton
           title={en.training.buttons.shadowButton}
           variant="primary"
-          style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 5 }, shadowOpacity: 0.3, shadowRadius: 5, elevation: 10, borderRadius: 25 }}
+          style={{ shadowColor: colors.text.primary, shadowOffset: { width: 0, height: 5 }, shadowOpacity: 0.3, shadowRadius: 5, elevation: 10, borderRadius: 25 }}
         />
       </View>
 

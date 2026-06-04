@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -20,7 +20,7 @@ const AppKeyboardAvoidingView: React.FC<AppKeyboardAvoidingViewProps> = ({
   ...props
 }) => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-  const styles = getKeyboardAvoidingStyles();
+  const styles = useMemo(() => getKeyboardAvoidingStyles(), []);
 
   // Safely get tab bar height if it's a tab screen
   let tabBarHeight = 0;

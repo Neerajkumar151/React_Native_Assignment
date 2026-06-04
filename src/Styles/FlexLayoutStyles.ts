@@ -1,7 +1,9 @@
+import { Spacing } from "../theme/spacing";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
-export const getFlexLayoutStyles = (colors: ThemeColors, spacing: any, typography: any) => StyleSheet.create({
+export const getFlexLayoutStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography) => StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: colors.background.paper },
   container: { flex: 1 },
   

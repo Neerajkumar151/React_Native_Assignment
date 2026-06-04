@@ -1,5 +1,5 @@
 import { Image } from "expo-image";
-import React from "react";
+import React, { useMemo } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { getDashboardStyles } from "../../Styles/DashboardStyles";
 import en from "../../constants/en.json";
@@ -8,7 +8,7 @@ import AccountCard from "./AccountCard";
 
 const AccountsSection = () => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <View>

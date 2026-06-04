@@ -1,7 +1,9 @@
+import { Spacing } from "../theme/spacing";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
-export const getContactListStyles = (colors: ThemeColors, spacing: any, typography: any) =>
+export const getContactListStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography) =>
   StyleSheet.create({
     container: {
       flex: 1,

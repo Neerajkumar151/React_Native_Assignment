@@ -1,4 +1,11 @@
 {
+  "tabs": {
+    "home": "Home",
+    "contact": "Contact",
+    "gallery": "Gallery",
+    "chat": "Chat",
+    "training": "Training"
+  },
   "home": {
     "title": "Home",
     "welcome": {
@@ -9,6 +16,8 @@
     "subtitle": "Explore your first React Native app",
     "counterText": "Current Count:",
     "incrementButton": "Increment Count",
+    "viewCart": "View Shopping Cart",
+    "viewDashboard": "View Assignment 3 Dashboard",
     "trainingButton": "Training",
     "noItems": "No items available",
     "items": [
@@ -206,6 +215,8 @@
     "remove": "Remove"
   },
   "dashboard": {
+    "userName": "Zee",
+    "idPrefix": "ID:",
     "unverified": "Unverified",
     "walletId": "Wallet ID: 12832U",
     "currency": "USD ▾",
@@ -233,5 +244,16 @@
     "tabTools": "Tools",
     "tabAccounts": "Accounts",
     "tabFunds": "Funds"
+  },
+  "funds": {
+    "title": "Funds Overview",
+    "deposit": "Deposit",
+    "depositSub": "Min Deposit is $10.",
+    "withdraw": "Withdraw",
+    "withdrawSub": "Max withdrawal is $1M.",
+    "transfer": "Transfer",
+    "transferSub": "Funds Limit: Unlimited",
+    "transactions": "Transactions",
+    "transactionsSub": "Recent Transactions"
   }
 }

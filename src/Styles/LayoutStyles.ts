@@ -1,7 +1,10 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
-export const getHeaderStyles = (colors: ThemeColors, spacing: any, typography: any) => StyleSheet.create({
+export const getHeaderStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography) => StyleSheet.create({
   header: {
     padding: spacing.xl,
     backgroundColor: colors.secondary,
@@ -14,7 +17,7 @@ export const getHeaderStyles = (colors: ThemeColors, spacing: any, typography: a
   },
 });
 
-export const getFooterStyles = (colors: ThemeColors, spacing: any) => StyleSheet.create({
+export const getFooterStyles = (colors: ThemeColors, spacing: Spacing) => StyleSheet.create({
   footer: {
     padding: spacing.lg,
     paddingBottom: 90,
@@ -24,7 +27,7 @@ export const getFooterStyles = (colors: ThemeColors, spacing: any) => StyleSheet
   text: { color: colors.text.muted },
 });
 
-export const getThemeViewStyles = (colors: ThemeColors, radius: any, spacing: any, insets: any) => StyleSheet.create({
+export const getThemeViewStyles = (colors: ThemeColors, radius: Radius, spacing: Spacing, insets: any) => StyleSheet.create({
   container: {
     backgroundColor: colors.background.surface,
     marginTop: insets.top,
@@ -56,7 +59,7 @@ export const getPageLayoutStyles = (colors: ThemeColors) => StyleSheet.create({
   }
 });
 
-export const getContentStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) => StyleSheet.create({
+export const getContentStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography, radius: Radius) => StyleSheet.create({
   container: { 
     flex: 1, 
     padding: spacing.lg,

@@ -1,17 +1,18 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import React, { useMemo } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import ThemeView from "../Components/ThemeView";
 import AppButton from "../Components/common/AppButton";
 import en from "../constants/en.json";
 import { useTheme } from "../theme";
 import { getContactStyles } from "../Styles/ContactStyles";
+import { RootStackParamList } from "../Navigator/types";
 
-const Contact1 = () => {
-  const { colors, spacing, typography } = useTheme();
-  const dynamicStyles = getContactStyles(colors, spacing, typography);
-  const navigation = useNavigation<any>();
+const ContactScreen = () => {
+  const { colors, typography, spacing, radius } = useTheme();
+  const dynamicStyles = useMemo(() => getContactStyles(colors, spacing, typography), [colors, spacing, typography]);
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   return (
     <ThemeView style={{ flex: 1 }}>
@@ -43,4 +44,4 @@ const Contact1 = () => {
   );
 };
 
-export default Contact1;
+export default ContactScreen;

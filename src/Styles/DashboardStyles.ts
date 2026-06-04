@@ -1,16 +1,19 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
 export const getDashboardStyles = (
   colors: ThemeColors,
-  spacing: any,
-  radius: any,
-  typography: any,
+  spacing: Spacing,
+  radius: Radius,
+  typography: Typography,
 ) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#0F0F1A", // Enforce dark background based on Figma design
+      backgroundColor: colors.background.main,
     },
     scrollContent: {
       padding: spacing.xl,
@@ -47,16 +50,16 @@ export const getDashboardStyles = (
     nameText: {
       fontSize: typography.size.lg,
       fontWeight: typography.weight.bold,
-      color: "#FFFFFF",
+      color: colors.text.primary,
     },
     badge: {
-      backgroundColor: "#1F1400", // Darkish yellow/brown background for badge
+      backgroundColor: colors.status.warningDark,
       paddingHorizontal: spacing.sm,
       paddingVertical: 2,
       borderRadius: radius.sm,
     },
     badgeText: {
-      color: "#F7DA62", // Amber/yellow color
+      color: colors.status.warning,
       fontSize: typography.size.xs,
       fontWeight: typography.weight.medium,
     },
@@ -67,30 +70,29 @@ export const getDashboardStyles = (
       marginTop: 2,
     },
     idTextPrefix: {
-      color: "#9CA3AF", // Gray
+      color: colors.text.muted,
       fontSize: typography.size.sm,
     },
     idTextValue: {
-      color: "#FFFFFF",
+      color: colors.text.primary,
       fontSize: typography.size.sm,
     },
     settingsBtn: {
       width: 40,
       height: 40,
       borderRadius: 20,
-      backgroundColor: "#1F1F2E",
+      backgroundColor: colors.background.elevated,
       justifyContent: "center",
       alignItems: "center",
     },
 
     // Wallet Card
     walletCard: {
-      backgroundColor: "#8b5bdfff", // Base purple color, real implementation should use a gradient component
+      backgroundColor: colors.accents.purple,
       borderRadius: radius.xl,
       padding: spacing.xl,
       marginBottom: spacing.md,
-      // Add glowing shadow
-      shadowColor: "#7C3AED",
+      shadowColor: colors.accents.purple,
       shadowOffset: { width: 0, height: 10 },
       shadowOpacity: 0.3,
       shadowRadius: 20,
@@ -103,7 +105,7 @@ export const getDashboardStyles = (
       marginBottom: spacing.md,
     },
     walletIdText: {
-      color: "#FFFFFFD9",
+      color: colors.text.secondary,
       fontSize: typography.size.sm,
     },
     currencyDropdown: {
@@ -111,7 +113,7 @@ export const getDashboardStyles = (
       alignItems: "center",
     },
     currencyText: {
-      color: "#FFFFFFD9",
+      color: colors.text.secondary,
       fontSize: typography.size.sm,
       fontWeight: typography.weight.bold,
     },
@@ -122,7 +124,7 @@ export const getDashboardStyles = (
       marginBottom: spacing.xl,
     },
     balanceText: {
-      color: "#FFFFFF",
+      color: colors.text.primary,
       fontSize: 48,
       fontWeight: typography.weight.bold,
     },
@@ -133,7 +135,7 @@ export const getDashboardStyles = (
     },
     statsCol: {},
     last24Text: {
-      color: "rgba(255, 255, 255, 0.7)",
+      color: colors.text.secondary,
       fontSize: typography.size.sm,
       marginBottom: 4,
     },
@@ -143,18 +145,18 @@ export const getDashboardStyles = (
       gap: 4,
     },
     growthText: {
-      color: "#44EC60", // Emerald green
+      color: colors.status.success,
       fontSize: typography.size.md,
       fontWeight: typography.weight.bold,
     },
     withdrawBtn: {
-      backgroundColor: "#000000",
+      backgroundColor: colors.background.dark,
       paddingHorizontal: spacing.xl,
       paddingVertical: spacing.md,
       borderRadius: 20, // Pill shape
     },
     withdrawText: {
-      color: "#FFFFFFD9",
+      color: colors.text.secondary,
       fontSize: typography.size.sm,
       fontWeight: typography.weight.bold,
     },
@@ -170,13 +172,13 @@ export const getDashboardStyles = (
       width: 6,
       height: 6,
       borderRadius: 3,
-      backgroundColor: "#FFFFFF",
+      backgroundColor: colors.text.primary,
     },
     dotInactive: {
       width: 6,
       height: 6,
       borderRadius: 3,
-      backgroundColor: "#4B5563",
+      backgroundColor: colors.text.muted,
     },
 
     // Sections
@@ -188,12 +190,12 @@ export const getDashboardStyles = (
       marginTop: spacing.md,
     },
     sectionTitle: {
-      color: "#FFFFFF",
+      color: colors.text.primary,
       fontSize: 22,
       fontWeight: typography.weight.medium,
     },
     sectionLink: {
-      color: "#9070D1", // Lighter purple
+      color: colors.primary,
       fontSize: typography.size.sm,
     },
 
@@ -211,12 +213,12 @@ export const getDashboardStyles = (
       width: 56,
       height: 56,
       borderRadius: 28,
-      backgroundColor: "#1A1A24",
+      backgroundColor: colors.background.elevated,
       justifyContent: "center",
       alignItems: "center",
     },
     quickAccessText: {
-      color: "#E5E7EB",
+      color: colors.text.secondary,
       fontSize: 11,
       textAlign: "center",
     },
@@ -224,7 +226,7 @@ export const getDashboardStyles = (
     // Accounts
     noActiveBox: {
       borderWidth: 1,
-      borderColor: "#374151", // Gray border
+      borderColor: colors.border,
       borderStyle: "dashed",
       borderRadius: radius.md,
       padding: spacing.xl,
@@ -233,13 +235,13 @@ export const getDashboardStyles = (
       marginBottom: spacing.lg,
     },
     noActiveTitle: {
-      color: "#FFFFFF",
+      color: colors.text.primary,
       fontSize: typography.size.md,
       fontWeight: typography.weight.medium,
       marginBottom: 4,
     },
     noActiveSub: {
-      color: "#9CA3AF",
+      color: colors.text.muted,
       fontSize: typography.size.sm,
     },
     accountCardsRow: {
@@ -249,7 +251,7 @@ export const getDashboardStyles = (
     },
     accountCard: {
       flex: 1,
-      backgroundColor: "#1A1A24",
+      backgroundColor: colors.background.elevated,
       borderRadius: 15,
       padding: spacing.md,
       paddingTop: spacing.lg,
@@ -258,14 +260,14 @@ export const getDashboardStyles = (
       overflow: "hidden",
     },
     cardTag: {
-      color: "rgba(255, 255, 255, 0.5)",
+      color: colors.text.muted,
       fontSize: 11,
       fontWeight: "500",
       marginBottom: 6,
       zIndex: 2,
     },
     cardTitle: {
-      color: "#EAE0FF",
+      color: colors.text.primary,
       fontSize: 18,
       lineHeight: 20,
       marginBottom: 6,
@@ -279,7 +281,7 @@ export const getDashboardStyles = (
       fontWeight: "700",
     },
     cardSub: {
-      color: "rgba(255, 255, 255, 0.65)",
+      color: colors.text.secondary,
       fontSize: 12,
       fontWeight: "500",
       lineHeight: 12,

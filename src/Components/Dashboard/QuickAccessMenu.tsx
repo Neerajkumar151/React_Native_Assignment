@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import en from "../../constants/en.json";
@@ -7,7 +7,7 @@ import { getDashboardStyles } from "../../Styles/DashboardStyles";
 
 const QuickAccessMenu = () => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   const quickAccessData = [
     { id: "1", title: en.dashboard.getFunded, icon: require("../../../assets/images/get_funded.svg") },
@@ -34,7 +34,7 @@ const QuickAccessMenu = () => {
                 source={item.icon} 
                 style={{ width: 24, height: 24 }} 
                 contentFit="contain"
-                tintColor="#FFFFFF" 
+                tintColor={colors.text.primary} 
               />
             </View>
             <Text style={styles.quickAccessText}>{item.title}</Text>

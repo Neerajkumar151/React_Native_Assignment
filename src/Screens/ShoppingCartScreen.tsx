@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppButton from "../Components/common/AppButton";
@@ -23,7 +23,7 @@ const INITIAL_CART: CartItem[] = [
 const ShoppingCartScreen = () => {
   const [cart, setCart] = useState<CartItem[]>(INITIAL_CART);
   const { colors, spacing, typography, radius } = useTheme();
-  const styles = getShoppingCartStyles(colors, spacing, typography, radius);
+  const styles = useMemo(() => getShoppingCartStyles(colors, spacing, typography, radius), [colors, spacing, typography, radius]);
 
   const handleRemove = (id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { View, Text } from "react-native";
 import { z } from "zod";
 import { getTrainingStyles } from "../../Styles/TrainingStyles";
@@ -24,7 +24,7 @@ const InputsSection = () => {
   const [ageError, setAgeError] = useState("");
 
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getTrainingStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getTrainingStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   const handlePasswordChange = (text: string) => {
     setPassword(text);

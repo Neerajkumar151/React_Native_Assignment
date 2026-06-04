@@ -1,17 +1,34 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
+import React, { useMemo } from "react";
 import ChatScreen from "../Screens/ChatScreen";
-import Contact1 from "../Screens/Contact1";
-import Gallery1 from "../Screens/Gallery1";
-import Home1 from "../Screens/Home1";
+import ContactScreen from "../Screens/ContactScreen";
+import GalleryScreen from "../Screens/GalleryScreen";
+import HomeScreen from "../Screens/HomeScreen";
 import Training from "../Screens/Training";
 import { useTheme } from "../theme";
+import en from "../constants/en.json";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   const { colors, radius, typography } = useTheme();
+
+  const tabBarStyle = useMemo(() => ({
+    position: "absolute" as const,
+    left: 20,
+    right: 20,
+    elevation: 8,
+    backgroundColor: colors.background.paper,
+    borderRadius: radius.round,
+    height: 60,
+    paddingBottom: 5,
+    paddingTop: 5,
+    shadowColor: colors.text.primary,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+  }), [colors, radius]);
 
   return (
     <Tab.Navigator
@@ -21,11 +38,11 @@ const TabNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: keyof typeof Ionicons.glyphMap;
 
-          if (route.name === "Home1") {
+          if (route.name === "HomeScreen") {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Contact1") {
+          } else if (route.name === "ContactScreen") {
             iconName = focused ? "mail" : "mail-outline";
-          } else if (route.name === "Gallery1") {
+          } else if (route.name === "GalleryScreen") {
             iconName = focused ? "images" : "images-outline";
           } else if (route.name === "Chat") {
             iconName = focused ? "chatbubble" : "chatbubble-outline";
@@ -37,53 +54,39 @@ const TabNavigator = () => {
 
           return <Ionicons name={iconName} size={size - 2} color={color} />;
         },
-        tabBarStyle: {
-          position: "absolute",
-          left: 20,
-          right: 20,
-          elevation: 8,
-          backgroundColor: colors.background.paper,
-          borderRadius: radius.round,
-          height: 60,
-          paddingBottom: 5,
-          paddingTop: 5,
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 10 },
-          shadowOpacity: 0.3,
-          shadowRadius: 12,
-        },
+        tabBarStyle,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.text.muted,
         tabBarLabelStyle: {
           fontSize: 11,
-          fontWeight: typography.weight.medium as any,
+          fontWeight: typography.weight.medium,
         },
       })}
     >
       <Tab.Screen
-        name="Home1"
-        component={Home1}
-        options={{ tabBarLabel: "Home" }}
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ tabBarLabel: en.tabs.home }}
       />
       <Tab.Screen
-        name="Contact1"
-        component={Contact1}
-        options={{ tabBarLabel: "Contact" }}
+        name="ContactScreen"
+        component={ContactScreen}
+        options={{ tabBarLabel: en.tabs.contact }}
       />
       <Tab.Screen
-        name="Gallery1"
-        component={Gallery1}
-        options={{ tabBarLabel: "Gallery" }}
+        name="GalleryScreen"
+        component={GalleryScreen}
+        options={{ tabBarLabel: en.tabs.gallery }}
       />
       <Tab.Screen
         name="Chat"
         component={ChatScreen}
-        options={{ tabBarLabel: "Chat" }}
+        options={{ tabBarLabel: en.tabs.chat }}
       />
       <Tab.Screen
         name="Training"
         component={Training}
-        options={{ tabBarLabel: "Training" }}
+        options={{ tabBarLabel: en.tabs.training }}
       />
     </Tab.Navigator>
   );

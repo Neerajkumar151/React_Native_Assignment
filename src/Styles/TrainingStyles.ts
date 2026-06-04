@@ -1,11 +1,14 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
 export const getTrainingStyles = (
   colors: ThemeColors,
-  spacing: any,
-  radius: any,
-  typography: any,
+  spacing: Spacing,
+  radius: Radius,
+  typography: Typography,
 ) =>
   StyleSheet.create({
     safeArea: { flex: 1, backgroundColor: colors.background.main },

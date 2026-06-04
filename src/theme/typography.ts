@@ -21,3 +21,4 @@ export const typography = {
     default: 'sans-serif',
   }),
 };
+export type Typography = typeof typography;

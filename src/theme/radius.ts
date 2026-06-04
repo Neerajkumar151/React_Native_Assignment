@@ -7,3 +7,4 @@ export const radius = {
   round: 25,
   circle: 9999,
 };
+export type Radius = typeof radius;

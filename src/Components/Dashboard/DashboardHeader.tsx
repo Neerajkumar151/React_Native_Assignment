@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
@@ -8,7 +8,7 @@ import { getDashboardStyles } from "../../Styles/DashboardStyles";
 
 const DashboardHeader = () => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <View style={styles.header}>
@@ -20,14 +20,14 @@ const DashboardHeader = () => {
         />
         <View style={styles.profileInfo}>
           <View style={styles.nameRow}>
-            <Text style={styles.nameText}>Zee</Text>
+            <Text style={styles.nameText}>{en.dashboard.userName}</Text>
             <View style={styles.badge}>
               <Text style={styles.badgeText}>{en.dashboard.unverified}</Text>
             </View>
           </View>
           <View style={styles.idRow}>
             <Text style={styles.idTextPrefix}>
-              ID: <Text style={styles.idTextValue}>A232121u</Text>
+              {en.dashboard.idPrefix} <Text style={styles.idTextValue}>A232121u</Text>
             </Text>
             <Image
               source={require("../../../assets/images/copy.svg")}
@@ -38,7 +38,7 @@ const DashboardHeader = () => {
         </View>
       </View>
       <TouchableOpacity style={styles.settingsBtn}>
-        <Ionicons name="settings-outline" size={20} color="#FFFFFF" />
+        <Ionicons name="settings-outline" size={20} color={colors.text.primary} />
       </TouchableOpacity>
     </View>
   );

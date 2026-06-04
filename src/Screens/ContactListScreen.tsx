@@ -20,7 +20,7 @@ interface Section {
 
 const ContactListScreen = () => {
   const { colors, spacing, typography } = useTheme();
-  const styles = getContactListStyles(colors, spacing, typography);
+  const styles = useMemo(() => getContactListStyles(colors, spacing, typography), [colors, spacing, typography]);
   const navigation = useNavigation();
 
   const sections = useMemo(() => {

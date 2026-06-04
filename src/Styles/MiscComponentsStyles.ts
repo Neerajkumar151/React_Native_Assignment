@@ -1,7 +1,10 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
-export const getDynamicListStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) => StyleSheet.create({
+export const getDynamicListStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography, radius: Radius) => StyleSheet.create({
   container: {
     backgroundColor: colors.background.surface,
     padding: spacing.lg,
@@ -43,7 +46,7 @@ export const getDynamicListStyles = (colors: ThemeColors, spacing: any, typograp
   }
 });
 
-export const getPlatformMessageStyles = (colors: ThemeColors, spacing: any, radius: any, typography: any) => StyleSheet.create({
+export const getPlatformMessageStyles = (colors: ThemeColors, spacing: Spacing, radius: Radius, typography: Typography) => StyleSheet.create({
   container: {
     padding: spacing.md,
     backgroundColor: colors.primary,
@@ -64,7 +67,7 @@ export const getPlatformMessageStyles = (colors: ThemeColors, spacing: any, radi
   }
 });
 
-export const getUserCardStyles = (colors: ThemeColors, spacing: any, typography: any) => StyleSheet.create({
+export const getUserCardStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography) => StyleSheet.create({
   card: {
     marginBottom: spacing.md,
   },

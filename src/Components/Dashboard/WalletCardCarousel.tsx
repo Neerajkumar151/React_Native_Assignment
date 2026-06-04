@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useMemo, useRef, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, FlatList, Dimensions, ViewToken } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -10,7 +10,7 @@ const { width } = Dimensions.get("window");
 
 const WalletCardCarousel = () => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
   
   const [activeIndex, setActiveIndex] = useState(0);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
@@ -35,7 +35,7 @@ const WalletCardCarousel = () => {
   const renderItem = ({ item }: { item: any }) => (
     <View style={{ width: width - (spacing.xl * 2), marginRight: spacing.md }}>
       <LinearGradient
-        colors={["#9070D1", "#803FE2"]}
+        colors={[colors.accents.purple, colors.primary]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={[styles.walletCard, { width: "100%", marginBottom: 0, backgroundColor: "transparent" }]}
@@ -54,7 +54,7 @@ const WalletCardCarousel = () => {
             <Ionicons 
               name={isBalanceVisible ? "eye-outline" : "eye-off-outline"} 
               size={20} 
-              color="rgba(255,255,255,0.7)" 
+              color={colors.text.secondary} 
             />
           </TouchableOpacity>
         </View>
@@ -62,7 +62,7 @@ const WalletCardCarousel = () => {
           <View style={styles.statsCol}>
             <Text style={styles.last24Text}>{en.dashboard.last24}</Text>
             <View style={styles.growthRow}>
-              <Ionicons name="trending-up" size={16} color="#44EC60" />
+              <Ionicons name="trending-up" size={16} color={colors.status.success} />
               <Text style={styles.growthText}>{item.growth}</Text>
             </View>
           </View>
@@ -97,7 +97,7 @@ const WalletCardCarousel = () => {
             key={index}
             style={[
               styles.dotInactive,
-              { backgroundColor: index === activeIndex ? "#FFFFFF" : "#4B5563" },
+              { backgroundColor: index === activeIndex ? colors.text.primary : colors.text.muted },
             ]}
           />
         ))}

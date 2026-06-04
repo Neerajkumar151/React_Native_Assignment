@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getDashboardStyles } from "../Styles/DashboardStyles";
@@ -10,7 +10,7 @@ import AccountsSection from "../Components/Dashboard/AccountsSection";
 
 const DashboardScreen = () => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <SafeAreaView style={styles.container}>

@@ -1,7 +1,8 @@
 import { Alert, Image, Text, View, TextInput } from "react-native";
-import React, { useReducer, useRef } from "react";
+import React, { useReducer, useRef, useMemo } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import ThemeView from "../Components/ThemeView";
 import AppButton from "../Components/common/AppButton";
 import AppInput from "../Components/common/AppInput";
@@ -11,6 +12,7 @@ import { getGalleryStyles } from "../Styles/GalleryStyles";
 import en from "../constants/en.json";
 import useDevicePlatform from "../hooks/useDevicePlatform";
 import { useTheme } from "../theme";
+import { RootStackParamList } from "../Navigator/types";
 
 type FormState = {
   username: string;
@@ -52,7 +54,7 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
   }
 };
 
-const Gallery1 = () => {
+const GalleryScreen = () => {
   const { os, isIos, isAndroid, isWeb, isMac, isWindows, version } =
     useDevicePlatform();
 
@@ -219,4 +221,4 @@ const Gallery1 = () => {
   );
 };
 
-export default Gallery1;
+export default GalleryScreen;

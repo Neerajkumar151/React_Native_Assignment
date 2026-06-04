@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Pressable, StyleSheet, PressableProps, ViewStyle, StyleProp } from 'react-native';
 import { useTheme } from '../../theme';
 import { getCardStyles } from '../../Styles/CommonComponentsStyles';
@@ -10,8 +10,8 @@ export interface PressableCardProps extends Omit<PressableProps, 'style'> {
 }
 
 const PressableCard: React.FC<PressableCardProps> = ({ children, style, variant = 'elevated', ...props }) => {
-  const { colors, spacing, radius } = useTheme();
-  const dynamicStyles = getCardStyles(colors, spacing, radius);
+  const { colors, radius, spacing } = useTheme();
+  const dynamicStyles = useMemo(() => getCardStyles(colors, spacing, radius), [colors, spacing, radius]);
 
   const getVariantStyles = (): ViewStyle => {
     switch (variant) {

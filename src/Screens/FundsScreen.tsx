@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AccountCard from "../Components/Dashboard/AccountCard";
 import DashboardHeader from "../Components/Dashboard/DashboardHeader";
 import { getDashboardStyles } from "../Styles/DashboardStyles";
 import { useTheme } from "../theme";
+import en from "../constants/en.json";
 
 const FundsScreen = () => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getDashboardStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getDashboardStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -20,14 +21,14 @@ const FundsScreen = () => {
 
         <Text
           style={{
-            color: "#FFFFFFE5",
+            color: colors.text.primary,
             fontSize: 22,
             fontWeight: "600",
             marginBottom: spacing.xl,
             marginTop: spacing.md,
           }}
         >
-          Funds Overview
+          {en.funds.title}
         </Text>
 
         <View
@@ -38,47 +39,47 @@ const FundsScreen = () => {
           }}
         >
           <AccountCard
-            title="Deposit"
-            subTitle="Min Deposit is $10."
+            title={en.funds.deposit}
+            subTitle={en.funds.depositSub}
             imageSource={require("../../assets/images/top-left1.svg")}
-            gradientColors={["#1A1A24", "#1A1A24"]}
+            gradientColors={[colors.background.elevated, colors.background.elevated]}
             imageStyle={{ width: 111, height: 111, top: 10 }}
             cardStyle={{ minHeight: 180 }}
-            titleColor="#FFFFFFE5"
-            subTitleColor="#FFFFFF80"
+            titleColor={colors.text.primary}
+            subTitleColor={colors.text.secondary}
           />
           <AccountCard
-            title="Withdraw"
-            subTitle="Max withdrawal is $1M."
+            title={en.funds.withdraw}
+            subTitle={en.funds.withdrawSub}
             imageSource={require("../../assets/images/top-right3.svg")}
-            gradientColors={["#1A1A24", "#1A1A24"]}
+            gradientColors={[colors.background.elevated, colors.background.elevated]}
             imageStyle={{ width: 111, height: 111, top: 10 }}
             cardStyle={{ minHeight: 180 }}
-            titleColor="#FFFFFFE5"
-            subTitleColor="#FFFFFF80"
+            titleColor={colors.text.primary}
+            subTitleColor={colors.text.secondary}
           />
         </View>
 
         <View style={{ flexDirection: "row", gap: spacing.md }}>
           <AccountCard
-            title="Transfer"
-            subTitle="Funds Limit: Unlimited"
+            title={en.funds.transfer}
+            subTitle={en.funds.transferSub}
             imageSource={require("../../assets/images/bottom-left2.svg")}
-            gradientColors={["#1A1A24", "#1A1A24"]}
+            gradientColors={[colors.background.elevated, colors.background.elevated]}
             imageStyle={{ width: 111, height: 111, top: 10 }}
             cardStyle={{ minHeight: 180 }}
-            titleColor="#FFFFFFE5"
-            subTitleColor="#FFFFFF80"
+            titleColor={colors.text.primary}
+            subTitleColor={colors.text.secondary}
           />
           <AccountCard
-            title="Transactions"
-            subTitle="Recent Transactions"
+            title={en.funds.transactions}
+            subTitle={en.funds.transactionsSub}
             imageSource={require("../../assets/images/bottom-right4.svg")}
-            gradientColors={["#1A1A24", "#1A1A24"]}
+            gradientColors={[colors.background.elevated, colors.background.elevated]}
             imageStyle={{ width: 111, height: 111, top: 10 }}
             cardStyle={{ minHeight: 180 }}
-            titleColor="#FFFFFFE5"
-            subTitleColor="#FFFFFF80"
+            titleColor={colors.text.primary}
+            subTitleColor={colors.text.secondary}
           />
         </View>
       </ScrollView>

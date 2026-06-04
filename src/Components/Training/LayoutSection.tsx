@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, Text, Dimensions } from "react-native";
 import { responsiveFontSize } from "react-native-responsive-dimensions";
 import { getTrainingStyles } from "../../Styles/TrainingStyles";
@@ -6,11 +6,14 @@ import en from "../../constants/en.json";
 import AppButton from "../common/AppButton";
 import { useTheme } from "../../theme";
 
+import { useNavigation } from "@react-navigation/native";
+
 const { width, height } = Dimensions.get("window");
 
-const LayoutSection = ({ navigation }: { navigation: any }) => {
+const LayoutSection = () => {
+  const navigation = useNavigation<any>();
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getTrainingStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getTrainingStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <>

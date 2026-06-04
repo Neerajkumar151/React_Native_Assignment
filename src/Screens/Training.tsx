@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import InputsSection from "../Components/Training/InputsSection";
@@ -13,7 +13,7 @@ import AppKeyboardAvoidingView from "../Components/common/AppKeyboardAvoidingVie
 
 const Training = ({ navigation }: { navigation: any }) => {
   const { colors, spacing, radius, typography } = useTheme();
-  const styles = getTrainingStyles(colors, spacing, radius, typography);
+  const styles = useMemo(() => getTrainingStyles(colors, spacing, radius, typography), [colors, spacing, radius, typography]);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -22,7 +22,7 @@ const Training = ({ navigation }: { navigation: any }) => {
           <Text style={styles.mainTitle}>{en.training.title}</Text>
           <InputsSection />
           <ButtonsSection />
-          <LayoutSection navigation={navigation} />
+          <LayoutSection />
           <ListsSection />
         </ScrollView>
       </AppKeyboardAvoidingView>

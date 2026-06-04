@@ -1,7 +1,10 @@
+import { Spacing } from "../theme/spacing";
+import { Radius } from "../theme/radius";
+import { Typography } from "../theme/typography";
 import { StyleSheet } from "react-native";
 import { ThemeColors } from "../theme/colors";
 
-export const getChatStyles = (colors: ThemeColors, spacing: any, typography: any, radius: any) =>
+export const getChatStyles = (colors: ThemeColors, spacing: Spacing, typography: Typography, radius: Radius) =>
   StyleSheet.create({
     container: {
       flex: 1,

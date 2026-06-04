@@ -1,68 +1,46 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import React, { useMemo } from "react";
+import { View } from "react-native";
 import DashboardScreen from "../Screens/DashboardScreen";
 import FundsScreen from "../Screens/FundsScreen";
 import en from "../constants/en.json";
+import { useTheme } from "../theme";
+import CustomTabBarButton from "../Components/common/CustomTabBarButton";
 
 // Placeholder screens for other tabs
-const PlaceholderScreen = () => (
-  <View style={{ flex: 1, backgroundColor: "#0F0F1A" }} />
-);
+const PlaceholderScreen = () => {
+  const { colors } = useTheme();
+  return <View style={{ flex: 1, backgroundColor: colors.background.main }} />;
+};
 
 const Tab = createBottomTabNavigator();
 
-// Custom Center Button component
-const CustomTabBarButton = ({ onPress }: any) => (
-  <TouchableOpacity
-    style={{
-      top: -30,
-      justifyContent: "center",
-      alignItems: "center",
-      elevation: 5,
-    }}
-    onPress={onPress}
-    activeOpacity={1}
-  >
-    <View
-      style={{
-        width: 65,
-        height: 65,
-        borderRadius: 42,
-        backgroundColor: "#803FE2",
-        borderWidth: 5,
-        borderColor: "#000000",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <MaterialCommunityIcons name="chart-bar" color="#FFFFFF" size={30} />
-    </View>
-  </TouchableOpacity>
-);
-
 const DashboardTabNavigator = () => {
+  const { colors, radius, typography } = useTheme();
+
+  const tabBarStyle = useMemo(() => ({
+    position: "absolute" as const,
+    bottom: 10,
+    left: 20,
+    right: 20,
+    elevation: 0,
+    backgroundColor: colors.background.elevated,
+    borderRadius: radius.xxl,
+    height: 64,
+    borderTopWidth: 0,
+    paddingBottom: 10,
+    paddingTop: 10,
+  }), [colors, radius]);
+
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: true,
-        tabBarStyle: {
-          position: "absolute",
-          bottom: 10,
-          left: 20,
-          right: 20,
-          elevation: 0,
-          backgroundColor: "#000000",
-          borderRadius: 30,
-          height: 64,
-          borderTopWidth: 0,
-          paddingBottom: 10,
-          paddingTop: 10,
-        },
-        tabBarActiveTintColor: "#FFFFFF",
-        tabBarInactiveTintColor: "#6B7280", // Gray
+        tabBarStyle,
+        tabBarActiveTintColor: colors.text.primary,
+        tabBarInactiveTintColor: colors.text.muted,
         tabBarLabelStyle: {
           fontSize: 10,
           marginTop: 2,
